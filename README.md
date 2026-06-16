@@ -1,4 +1,4 @@
-# YUYA — Portfolio
+# kingyo — Portfolio
 
 Personal portfolio site built with Next.js 14 (App Router) + Tailwind CSS.
 
