@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-inter: "Inter", system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #ffffff;
+  color: #0a0a0a;
+  font-family: var(--font-inter);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Clamp helper for fluid headlines (mobile -> desktop) */
+.fluid-hero {
+  font-size: clamp(64px, 12vw, 174px);
+  line-height: 1;
+  letter-spacing: -0.09em;
+}
+
+.fluid-h2 {
+  font-size: clamp(32px, 5vw, 54px);
+  line-height: 1.15;
+  letter-spacing: -0.05em;
+}
+
+.fluid-service {
+  font-size: clamp(36px, 6vw, 64px);
+  line-height: 1.1;
+  letter-spacing: -0.05em;
+}
+
+.fluid-cta {
+  font-size: clamp(22px, 3vw, 32px);
+  line-height: 1.2;
+}
+
+/* ---------- Scroll Reveal ---------- */
+.reveal {
+  opacity: 0;
+  transform: translate3d(0, 32px, 0);
+  transition:
+    opacity 800ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 800ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 800ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal-fade {
+  transform: none;
+}
+.reveal-up {
+  transform: translate3d(0, 32px, 0);
+}
+.reveal-down {
+  transform: translate3d(0, -24px, 0);
+}
+.reveal-left {
+  transform: translate3d(-40px, 0, 0);
+}
+.reveal-right {
+  transform: translate3d(40px, 0, 0);
+}
+.reveal-mask {
+  overflow: hidden;
+}
+.reveal-mask > * {
+  display: inline-block;
+  transform: translate3d(0, 110%, 0);
+  transition: transform 1000ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: inherit;
+  will-change: transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  filter: none;
+}
+.reveal-mask.is-visible > * {
+  transform: translate3d(0, 0, 0);
+}
+
+/* Subtle parallax-like float on hero blocks */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-mask > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .float-slow {
+    animation: none;
+  }
+}

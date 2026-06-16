@@ -1,0 +1,12 @@
+node_modules
+.next
+out
+.DS_Store
+*.log
+.env*.local
+*.tsbuildinfo
+
+# Behance "Save Page As" exports — these include scripts with embedded secrets
+public/gallery/**/Editing*Behance.html
+public/gallery/**/*Behance_files/
+
